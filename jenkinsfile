@@ -37,8 +37,8 @@ pipeline {
             echo "Setting up AWS credentials for Jenkins..."
             mkdir -p /var/lib/jenkins/.aws
             echo "[default]" > /var/lib/jenkins/.aws/credentials
-            echo "aws_access_key_id=AKIAQHDK5MNB5JJZETUU" >> /var/lib/jenkins/.aws/credentials
-            echo "aws_secret_access_key=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" >> /var/lib/jenkins/.aws/credentials
+            echo "aws_access_key_id=AKIAQHDK5MNBSRJUOVTC" >> /var/lib/jenkins/.aws/credentials
+            echo "aws_secret_access_key=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" >> /var/lib/jenkins/.aws/credentials
             chown -R jenkins:jenkins /var/lib/jenkins/.aws
             '''
         }
@@ -68,7 +68,7 @@ pipeline {
                 script {
                     sh '''
                         echo "Logging into AWS ECR..."
-                        aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 015256609603.dkr.ecr.ap-south-1.amazonaws.com/docker/testimages
+                        aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
                     '''
                 }
             }
